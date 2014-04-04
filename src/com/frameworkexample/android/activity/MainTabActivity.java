@@ -2,7 +2,6 @@ package com.frameworkexample.android.activity;
 
 import com.frameworkexample.android.R;
 import com.frameworkexample.android.activity.base.BaseFragmentTabActivity;
-import com.frameworkexample.android.utils.LogUtils;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +13,7 @@ public class MainTabActivity extends BaseFragmentTabActivity {
 	final String TAG = MainTabActivity.class.getSimpleName();
 	
 	@Override
-	public int getLayoutResId() {
+	protected int provideLayoutResId() {
 		return R.layout.activity_maintab;
 	}
 	
@@ -48,7 +47,6 @@ public class MainTabActivity extends BaseFragmentTabActivity {
 	
 	@Override
 	public void initView(View view) {
-		
 	}
 
 	@Override
@@ -58,26 +56,11 @@ public class MainTabActivity extends BaseFragmentTabActivity {
 
 	@Override
 	public void initData(View view, Bundle savedInstanceState) {
-		new Thread() {
-			@Override
-			public void run() {
-//				LogUtils.d("yytest", "B start A instance = " + MainActivity.instance.get());
-				try {
-					Thread.sleep(7000);
-				} catch (Exception e) {
-				}
-				System.gc();
-				try {
-					Thread.sleep(3000);
-				} catch (Exception e) {
-				}
-				LogUtils.d("yytest", "after GC A instance = " + MainActivity.instance.get());
-			}
-		}.start();
+		
 	}
 
 	@Override
-	public Handler provideActivityHandler() {
+	protected Handler provideActivityHandler() {
 		return null;
 	}
 

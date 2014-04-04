@@ -1,5 +1,7 @@
 package com.frameworkexample.android.activity;
 
+import org.ixming.android.inject.InjectorUtils;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,7 +12,7 @@ import com.frameworkexample.android.activity.base.BaseFragment;
 public class Fragment1 extends BaseFragment {
 
 	@Override
-	public int getLayoutResId() {
+	public int provideLayoutResId() {
 		return R.layout.activity_main;
 	}
 
@@ -25,10 +27,11 @@ public class Fragment1 extends BaseFragment {
 
 	@Override
 	public void initData(View view, Bundle savedInstanceState) {
+		InjectorUtils.defaultInstance().inject(this, getRootView());
 	}
-
+	
 	@Override
-	public Handler provideActivityHandler() {
+	protected Handler provideActivityHandler() {
 
 		return null;
 	}
